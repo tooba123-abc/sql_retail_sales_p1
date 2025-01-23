@@ -92,7 +92,7 @@ WHERE
    
    ```
 
-3. **Calculate total sales per category**:
+3. Write a SQL query to calculate the total sales (total_sale) for each category
    ```sql
    SELECT category, SUM(total_sale) AS total_sales 
    FROM retail_sales 
@@ -101,25 +101,25 @@ WHERE
 4.Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category
 ```sql
 SELECT
-ROUND(AVG(age), 2) as avg_age
+   ROUND(AVG(age), 2) as avg_age
 FROM retail_sales
 WHERE category = 'Beauty'
 ```
 
-5.Identify high-value transactions
+5.Write a SQL query where total_sales is greater than 1000
    ```sql
    SELECT * FROM retail_sales 
    WHERE total_sale > 1000;
    ```
 
-6. **Transactions by gender and category**:
+6.Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category 
    ```sql
-   SELECT category, gender, COUNT(transactions_id) AS total_transactions 
+ SELECT category, gender, COUNT(transactions_id) AS total_transactions 
    FROM retail_sales 
    GROUP BY category, gender;
    ```
 
-7. **Top 5 customers by total sales**:
+7. Write a SQL query to find the top 5 customers based on the highest total sales
    ```sql
    SELECT customer_id, SUM(total_sale) AS total_spent 
    FROM retail_sales 
@@ -128,23 +128,23 @@ WHERE category = 'Beauty'
    LIMIT 5;
    ```
 
-8. **Unique customers per category**:
+8. Write a SQL query to find the number of unique customers who purchased items from each category
    ```sql
    SELECT category, COUNT(DISTINCT customer_id) AS unique_customers 
    FROM retail_sales 
    GROUP BY category;
    ```
 
-9. **Order analysis by shift (Morning, Afternoon, Evening)**:
+9. Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)
     ```sql
-    SELECT 
+ SELECT 
         CASE 
             WHEN EXTRACT(HOUR FROM sale_time) <= 12 THEN 'Morning'
             WHEN EXTRACT(HOUR FROM sale_time) BETWEEN 12 AND 17 THEN 'Afternoon'
             ELSE 'Evening' 
         END AS shift,
         COUNT(transactions_id) AS total_orders
-    FROM retail_sales 
+FROM retail_sales 
     GROUP BY shift;
     ```
 
@@ -162,5 +162,8 @@ WHERE category = 'Beauty'
 - **Customer Insights**: Reports on top customers and unique customer counts per category.
 
 ## Conclusion
+This project serves as a comprehensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and business-driven SQL queries. The findings from this project can help drive business decisions by understanding sales patterns, customer behavior, and product performance.
+
+
 
 This project serves as a comprehensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and business-driven SQL queries. The findings from this project can help drive business decisions by understanding sales patterns, customer behavior, and product performance.
